@@ -1,6 +1,7 @@
 {
   "name": "anycast",
   "private": true,
+  "type": "module",
   "scripts": {
     "format": "biome format --write .",
     "lint": "biome lint .",
@@ -8,5 +9,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.3"
+  },
+  "dependencies": {
+    "fluent-ffmpeg": "2.1.3"
   }
 }
