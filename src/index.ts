@@ -1,3 +1,5 @@
-export const hello = (name: string): string => {
-  return `Hello, ${name}!`;
+export const hello = (name: string): void => {
+  console.log("hello");
 };
+
+hello("aaa");
