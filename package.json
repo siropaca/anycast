@@ -1,3 +1,12 @@
 {
-  "name": "anycast"
+  "name": "anycast",
+  "private": true,
+  "scripts": {
+    "format": "biome format --write .",
+    "lint": "biome lint .",
+    "check": "biome check --apply ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.5.3"
+  }
 }
