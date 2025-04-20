@@ -9,11 +9,13 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.3",
-    "typescript": "5.8.3",
-    "@types/node": "22.14.0"
+    "@types/fluent-ffmpeg": "2.1.27",
+    "@types/node": "22.14.0",
+    "typescript": "5.8.3"
   },
   "dependencies": {
     "dotenv": "16.4.5",
+    "ffmpeg-static": "5.2.0",
     "fluent-ffmpeg": "2.1.3"
   }
 }
