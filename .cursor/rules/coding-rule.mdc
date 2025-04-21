@@ -1,0 +1,8 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+## コーディング規約
+
+- 関数はできるだけfunction型で記述すること
