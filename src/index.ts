@@ -1,7 +1,9 @@
-import "dotenv/config"
+import { getEnvVar } from "./lib/env.js"
+
+const { apiKey } = getEnvVar()
 
 export function hello(): void {
-  console.log(process.env.NIJIVOICE_API_KEY)
+  console.log(apiKey)
 }
 
 hello()
