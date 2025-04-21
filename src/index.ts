@@ -1,4 +1,4 @@
-import { fetchNijiVoice } from "./lib/fetch.js"
+import { fetchNijiVoice } from "./lib/fetch/fetch.js"
 
 async function main(): Promise<void> {
   const response = await fetchNijiVoice({
