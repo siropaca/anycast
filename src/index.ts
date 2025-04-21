@@ -1,9 +1,9 @@
 import { getEnvVar } from "./lib/env.js"
 
-const { apiKey } = getEnvVar()
+const { nijivoiceApiKey } = getEnvVar()
 
 export function hello(): void {
-  console.log(apiKey)
+  console.log(nijivoiceApiKey)
 }
 
 hello()

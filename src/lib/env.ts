@@ -1,12 +1,14 @@
 import { config } from "dotenv"
 
+config()
+
 interface EnvVar {
-  apiKey: string
+  nijivoiceApiKey: string
 }
 
 export const getEnvVar = (): EnvVar => {
   const vars: Partial<EnvVar> = {
-    apiKey: process.env.NIJIVOICE_API_KEY,
+    nijivoiceApiKey: process.env.NIJIVOICE_API_KEY,
   }
 
   for (const [key, value] of Object.entries(vars)) {
