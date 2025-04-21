@@ -18,6 +18,14 @@ interface Params {
   soundDuration?: number;
 }
 
+interface RequestBody {
+  format: string;
+  script: string;
+  speed: string;
+  emotionalLevel?: string;
+  soundDuration?: string;
+}
+
 interface Response {
   generatedVoice: {
     audioFileUrl: string;
@@ -38,7 +46,7 @@ export function fetchNijiVoice({
 
   const url = `https://api.nijivoice.com/api/platform/v1/voice-actors/${actorId}/generate-voice`;
 
-  const body = {
+  const body: RequestBody = {
     format: "mp3",
     script: word,
     speed: String(speed),
