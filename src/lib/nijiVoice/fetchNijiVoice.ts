@@ -1,5 +1,6 @@
-import { getEnvVar } from "../env.js"
 import { VoiceParams, RequestBody, VoiceResponse } from "./types.js"
+import { fetchWithApiKey } from "../fetch.js"
+import { getEnvVar } from "../env.js"
 
 /**
  * にじボイスの API を叩く
@@ -7,28 +8,12 @@ import { VoiceParams, RequestBody, VoiceResponse } from "./types.js"
 export async function fetchNijiVoice(params: VoiceParams): Promise<VoiceResponse> {
   const { nijiVoiceApiKey } = getEnvVar()
 
-  const url = createRequestUrl(params.actorId)
-
-  try {
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        "content-type": "application/json",
-        "x-api-key": nijiVoiceApiKey,
-      },
-      body: JSON.stringify(createRequestBody(params)),
-    })
-
-    if (!response.ok) {
-      throw new Error(`API request failed: ${response.status}`)
-    }
-
-    return response.json()
-  } catch (error) {
-    console.error("Error fetching voice:", error)
-    throw error
-  }
+  return fetchWithApiKey<VoiceResponse>({
+    method: "POST",
+    apiKey: nijiVoiceApiKey,
+    url: createRequestUrl(params.actorId),
+    body: createRequestBody(params),
+  })
 }
 
 /**
