@@ -1,8 +1,7 @@
 import "dotenv/config";
 
-export const hello = (name: string): void => {
-  console.log("hello");
-  console.log(process.env.API_KEY);
-};
+export function hello(): void {
+  console.log(process.env.NIJIVOICE_API_KEY);
+}
 
-hello("aaa");
+hello();
