@@ -1,7 +1,7 @@
-import "dotenv/config";
+import "dotenv/config"
 
 export function hello(): void {
-  console.log(process.env.NIJIVOICE_API_KEY);
+  console.log(process.env.NIJIVOICE_API_KEY)
 }
 
-hello();
+hello()
