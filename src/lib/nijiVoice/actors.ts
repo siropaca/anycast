@@ -10,7 +10,10 @@ export type ActorName =
   | "新堂 慶介"
   | "苔村 まりも"
   | "ヴィクター・D・アシュフォード"
-  | "陽斗・エイデン・グリーンウッド";
+  | "陽斗・エイデン・グリーンウッド"
+  | "三浦 隼人"
+  | "篠崎 優也"
+  | "李 昊天";
 
 type ActorInfo = {
   name: ActorName;
@@ -69,8 +72,26 @@ const ACTORS: ActorInfo[] = [
   {
     name: "陽斗・エイデン・グリーンウッド",
     id: "29cdf589-e581-4ab0-8467-0cd0c7ba640f",
-    speed: 0.95,
+    speed: 0.8,
     note: "少年",
+  },
+  {
+    name: "三浦 隼人",
+    id: "65721129-028e-4fcc-8b9d-9974f670fe94",
+    speed: 0.8,
+    note: "落ち着いた",
+  },
+  {
+    name: "篠崎 優也",
+    id: "b6d08e70-dbbb-48cc-b808-d4b3fad1eea8",
+    speed: 0.8,
+    note: "おどおど",
+  },
+  {
+    name: "李 昊天",
+    id: "f35cb410-d2e8-40ad-8bce-9235951528ed",
+    speed: 0.8,
+    note: "おどおど",
   },
 ];
 
