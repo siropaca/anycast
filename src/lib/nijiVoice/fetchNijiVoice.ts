@@ -1,5 +1,5 @@
 import { FetchNijiVoiceParams, RequestBody, VoiceResponse } from "./types.js";
-import { fetcher } from "../fetch.js";
+import { fetcher } from "../fetcher.js";
 import { getEnvVar } from "../env.js";
 
 /**
