@@ -5,7 +5,7 @@
 interface FetcherParams {
   method: string;
   url: string;
-  body: any;
+  body?: any;
   headers?: Record<string, string>;
 }
 
@@ -22,7 +22,7 @@ export async function fetcher<T>(params: FetcherParams): Promise<T> {
         "content-type": "application/json",
         ...params.headers,
       },
-      body: JSON.stringify(params.body),
+      body: params.body ? JSON.stringify(params.body) : undefined,
     });
 
     if (!response.ok) {
