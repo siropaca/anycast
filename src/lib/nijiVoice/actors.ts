@@ -7,7 +7,9 @@ export type ActorName =
   | "春野 奏汰"
   | "小鳥遊 緑音"
   | "金城 夏海"
-  | "新堂 慶介";
+  | "新堂 慶介"
+  | "苔村 まりも"
+  | "ヴィクター・D・アシュフォード";
 
 type ActorInfo = {
   name: ActorName;
@@ -50,6 +52,18 @@ const ACTORS: ActorInfo[] = [
     id: "48f0a19c-660c-42a8-906b-e466caafe305",
     speed: 0.85,
     note: "おじさん",
+  },
+  {
+    name: "苔村 まりも",
+    id: "2f982b65-dbc3-4ed6-b355-b0f7c0abaa70",
+    speed: 0.85,
+    note: "マイペース",
+  },
+  {
+    name: "ヴィクター・D・アシュフォード",
+    id: "4407962b-8901-447a-8e0e-7896a0d230c0",
+    speed: 0.95,
+    note: "ワイルドおじさん",
   },
 ];
 
