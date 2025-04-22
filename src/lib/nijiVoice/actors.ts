@@ -63,7 +63,7 @@ const ACTORS: ActorInfo[] = [
   {
     name: "ヴィクター・D・アシュフォード",
     id: "4407962b-8901-447a-8e0e-7896a0d230c0",
-    speed: 0.95,
+    speed: 0.6,
     note: "ワイルドおじさん",
   },
   {
