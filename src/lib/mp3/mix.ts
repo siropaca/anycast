@@ -14,7 +14,7 @@ export async function mixAudioWithBgm(
   mainAudioPath: string,
   bgmPath: string,
   outputPath: string,
-  bgmVolume: number = 0.3
+  bgmVolume: number = 0.2
 ): Promise<void> {
   await fs.mkdir(path.dirname(outputPath), { recursive: true })
 
@@ -24,9 +24,9 @@ export async function mixAudioWithBgm(
       .input(bgmPath)
       .inputOptions("-stream_loop", "-1") // BGMをループ
       .complexFilter([
-        // BGMの音量を調整
+        // BGM の音量を調整
         `[1:a]volume=${bgmVolume}[bgm]`,
-        // メイン音声とBGMをミックス
+        // メイン音声と BGM をミックス
         `[0:a][bgm]amix=inputs=2:duration=first:dropout_transition=2[out]`,
       ])
       .outputOptions("-map", "[out]")
