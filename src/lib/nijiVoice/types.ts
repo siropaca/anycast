@@ -1,4 +1,4 @@
-export interface VoiceParams {
+export interface FetchNijiVoiceParams {
   actorId: string
   // 音声を合成するテキスト。3,000文字まで一度に生成可能です。
   // また、<sp 1.0>xxxのようにタグで囲むことで、タグ内のテキストのスピードを変更することができます。

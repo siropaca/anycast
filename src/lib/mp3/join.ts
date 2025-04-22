@@ -9,7 +9,6 @@ import { randomUUID } from "crypto"
  * @param urls - MP3 の URL 配列
  * @param outputPath - 出力する MP3 のパス
  * @param silenceDuration - 音声間の空白時間（秒）
- * @returns 結合した MP3 のパス
  */
 export async function joinMp3FromUrls(
   urls: string[],
@@ -43,6 +42,7 @@ export async function joinMp3FromUrls(
         if (i < mp3Paths.length - 1 && silenceDuration > 0) {
           const silencePath = path.join(tempDir, `silence${i}.mp3`)
           lines.push(`file '${silencePath}'`)
+
           // 空白音声ファイルを生成
           await new Promise<void>((resolve, reject) => {
             ffmpeg()
@@ -57,6 +57,7 @@ export async function joinMp3FromUrls(
         return lines.join("\n")
       })
     )
+
     const concatText = concatLines.join("\n")
     await fs.writeFile(concatListPath, concatText)
 

@@ -1,11 +1,11 @@
-import { VoiceParams, RequestBody, VoiceResponse } from "./types.js"
+import { FetchNijiVoiceParams, RequestBody, VoiceResponse } from "./types.js"
 import { fetchWithApiKey } from "../fetch.js"
 import { getEnvVar } from "../env.js"
 
 /**
  * にじボイスの API を叩く
  */
-export async function fetchNijiVoice(params: VoiceParams): Promise<VoiceResponse> {
+export async function fetchNijiVoice(params: FetchNijiVoiceParams): Promise<VoiceResponse> {
   const { nijiVoiceApiKey } = getEnvVar()
 
   return fetchWithApiKey<VoiceResponse>({
@@ -26,7 +26,7 @@ function createRequestUrl(actorId: string): string {
 /**
  * リクエストボディを作成する
  */
-function createRequestBody(params: VoiceParams): RequestBody {
+function createRequestBody(params: FetchNijiVoiceParams): RequestBody {
   const body: RequestBody = {
     format: "mp3",
     script: params.script,
