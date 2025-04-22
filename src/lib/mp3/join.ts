@@ -8,11 +8,13 @@ import { randomUUID } from "crypto";
  *
  * @param urls - MP3 の URL 配列
  * @param outputPath - 出力する MP3 のパス
+ * @param silenceDuration - 音声間の空白時間（秒）
  * @returns 結合した MP3 のパス
  */
 export async function joinMp3FromUrls(
   urls: string[],
-  outputPath: string
+  outputPath: string,
+  silenceDuration: number = 0
 ): Promise<void> {
   const tempDir = path.join(process.cwd(), "temp", randomUUID());
   await fs.mkdir(tempDir, { recursive: true });
@@ -35,7 +37,27 @@ export async function joinMp3FromUrls(
     }
 
     const concatListPath = path.join(tempDir, "concat.txt");
-    const concatText = mp3Paths.map((p) => `file '${p}'`).join("\n");
+    const concatLines = await Promise.all(
+      mp3Paths.map(async (p, i) => {
+        const lines = [`file '${p}'`];
+        if (i < mp3Paths.length - 1 && silenceDuration > 0) {
+          const silencePath = path.join(tempDir, `silence${i}.mp3`);
+          lines.push(`file '${silencePath}'`);
+          // 空白音声ファイルを生成
+          await new Promise<void>((resolve, reject) => {
+            ffmpeg()
+              .input("anullsrc")
+              .inputOptions("-f", "lavfi")
+              .outputOptions("-t", silenceDuration.toString())
+              .on("end", () => resolve())
+              .on("error", (err) => reject(err))
+              .save(silencePath);
+          });
+        }
+        return lines.join("\n");
+      })
+    );
+    const concatText = concatLines.join("\n");
     await fs.writeFile(concatListPath, concatText);
 
     await new Promise<void>((resolve, reject) => {

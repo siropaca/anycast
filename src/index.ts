@@ -92,7 +92,7 @@ async function main(): Promise<void> {
 
   console.log("🔄 音声結合中...");
 
-  await joinMp3FromUrls(urls, "output/output.mp3");
+  await joinMp3FromUrls(urls, "output/output.mp3", 0.5);
 
   await mixAudioWithBgm(
     "output/output.mp3",
