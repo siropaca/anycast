@@ -1,6 +1,6 @@
 import { fetcher } from "../fetcher.js";
 import { getEnvVar } from "../env.js";
-import { GetVoiceActorsResponse, VoiceActor } from "./types.js";
+import { GetVoiceActorsResponse } from "./types.js";
 
 /**
  * 声優一覧の取得
