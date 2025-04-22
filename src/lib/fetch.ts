@@ -3,10 +3,10 @@
 //--------------------------------------------------------------
 
 interface FetchOptions {
-  method: string
-  apiKey: string
-  url: string
-  body: any
+  method: string;
+  apiKey: string;
+  url: string;
+  body: any;
 }
 
 //--------------------------------------------------------------
@@ -26,15 +26,15 @@ export async function fetchWithApiKey<T>(options: FetchOptions): Promise<T> {
         "x-api-key": options.apiKey,
       },
       body: JSON.stringify(options.body),
-    })
+    });
 
     if (!response.ok) {
-      throw new Error(`API request failed: ${response.status}`)
+      throw new Error(`API request failed: ${response.status}`);
     }
 
-    return response.json()
+    return response.json();
   } catch (error) {
-    console.error("Error fetching:", error)
-    throw error
+    console.error("Error fetching:", error);
+    throw error;
   }
 }

@@ -1,13 +1,13 @@
-import { config } from "dotenv"
+import { config } from "dotenv";
 
-config()
+config();
 
 //--------------------------------------------------------------
 // Types
 //--------------------------------------------------------------
 
 interface EnvVar {
-  nijiVoiceApiKey: string
+  nijiVoiceApiKey: string;
 }
 
 //--------------------------------------------------------------
@@ -17,13 +17,13 @@ interface EnvVar {
 export function getEnvVar(): EnvVar {
   const vars: Partial<EnvVar> = {
     nijiVoiceApiKey: process.env.NIJI_VOICE_API_KEY,
-  }
+  };
 
   for (const [key, value] of Object.entries(vars)) {
     if (!value) {
-      throw new Error(`Missing environment variable: ${key}`)
+      throw new Error(`Missing environment variable: ${key}`);
     }
   }
 
-  return vars as EnvVar
+  return vars as EnvVar;
 }

@@ -1,7 +1,7 @@
-import { fetchNijiVoice } from "./lib/nijiVoice/fetchNijiVoice.js"
-import { ActorName, getActorInfo } from "./lib/nijiVoice/actors.js"
-import { joinMp3FromUrls } from "./lib/mp3/join.js"
-import { mixAudioWithBgm } from "./lib/mp3/mix.js"
+import { fetchNijiVoice } from "./lib/nijiVoice/fetchNijiVoice.js";
+import { ActorName, getActorInfo } from "./lib/nijiVoice/actors.js";
+import { joinMp3FromUrls } from "./lib/mp3/join.js";
+import { mixAudioWithBgm } from "./lib/mp3/mix.js";
 
 const scripts: ReadonlyArray<{ actorName: ActorName; script: string }> = [
   {
@@ -69,32 +69,32 @@ const scripts: ReadonlyArray<{ actorName: ActorName; script: string }> = [
   //   script:
   //     "がんばってね！というわけで、こんやのフロントエンドカフェはここまで。次回もお楽しみに",
   // },
-]
+];
 
 async function main(): Promise<void> {
-  const urls: string[] = []
+  const urls: string[] = [];
 
   for (const script of scripts) {
-    console.log("🔄 音声生成中：", `${script.actorName}「${script.script}」`)
+    console.log("🔄 音声生成中：", `${script.actorName}「${script.script}」`);
 
-    const actorInfo = getActorInfo(script.actorName)
+    const actorInfo = getActorInfo(script.actorName);
     const response = await fetchNijiVoice({
       actorId: actorInfo.id,
       script: script.script,
       speed: actorInfo.speed,
-    })
+    });
 
-    console.log("🎉 音声生成完了")
-    console.log("remainingCredits:", response.generatedVoice.remainingCredits)
+    console.log("🎉 音声生成完了");
+    console.log("remainingCredits:", response.generatedVoice.remainingCredits);
 
-    urls.push(response.generatedVoice.audioFileUrl)
+    urls.push(response.generatedVoice.audioFileUrl);
   }
 
-  console.log("🔄 音声結合中...")
+  console.log("🔄 音声結合中...");
 
-  await joinMp3FromUrls(urls, "output/output.mp3", 0.5)
+  await joinMp3FromUrls(urls, "output/output.mp3", 0.5);
 
-  await mixAudioWithBgm("output/output.mp3", "bgm/bgm1.mp3", "output/mixed.mp3", 0.1)
+  await mixAudioWithBgm("output/output.mp3", "bgm/bgm1.mp3", "output/mixed.mp3", 0.1);
 }
 
-main()
+main();
