@@ -3,10 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "generate": "tsx src/index.ts",
     "format": "biome format --write .",
     "lint": "biome lint .",
-    "check": "biome check --apply .",
-    "dev": "tsx src/index.ts"
+    "check": "biome check --apply ."
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.3",

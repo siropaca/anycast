@@ -17,6 +17,7 @@ export async function joinMp3FromUrls(urls: string[], outputPath: string): Promi
     // URL からローカルに MP3 を保存
     for (let i = 0; i < urls.length; i++) {
       const res = await fetch(urls[i])
+
       if (!res.ok) {
         throw new Error(`Failed to fetch MP3 from: ${urls[i]}`)
       }
@@ -44,8 +45,10 @@ export async function joinMp3FromUrls(urls: string[], outputPath: string): Promi
     })
 
     console.log("🎉 結合完了:", outputPath)
+  } catch (error) {
+    console.error("🚨 結合エラー:", error)
+    throw error
   } finally {
-    // 後片付け
     await fs.rm(tempDir, { recursive: true, force: true })
   }
 }
