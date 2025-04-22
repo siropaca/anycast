@@ -1,4 +1,8 @@
-import { FetchNijiVoiceParams, RequestBody, VoiceResponse } from "./types.js";
+import {
+  FetchNijiVoiceParams,
+  FetchNijiVoiceRequestBody,
+  FetchNijiVoiceResponse,
+} from "./types.js";
 import { fetcher } from "../fetcher.js";
 import { getEnvVar } from "../env.js";
 
@@ -7,10 +11,10 @@ import { getEnvVar } from "../env.js";
  */
 export async function fetchNijiVoice(
   params: FetchNijiVoiceParams
-): Promise<VoiceResponse> {
+): Promise<FetchNijiVoiceResponse> {
   const { nijiVoiceApiKey } = getEnvVar();
 
-  return fetcher<VoiceResponse>({
+  return fetcher<FetchNijiVoiceResponse>({
     method: "POST",
     apiKey: nijiVoiceApiKey,
     url: createRequestUrl(params.actorId),
@@ -28,8 +32,10 @@ function createRequestUrl(actorId: string): string {
 /**
  * リクエストボディを作成する
  */
-function createRequestBody(params: FetchNijiVoiceParams): RequestBody {
-  const body: RequestBody = {
+function createRequestBody(
+  params: FetchNijiVoiceParams
+): FetchNijiVoiceRequestBody {
+  const body: FetchNijiVoiceRequestBody = {
     format: "mp3",
     script: params.script,
     speed: String(params.speed),

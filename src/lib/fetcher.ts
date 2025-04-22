@@ -1,5 +1,4 @@
 //--------------------------------------------------------------
-import { FetchNijiVoiceParams } from "./nijiVoice/types";
 // Types
 //--------------------------------------------------------------
 
@@ -14,9 +13,6 @@ interface FetcherParams {
 // Functions
 //--------------------------------------------------------------
 
-/**
- * 共通の fetch 処理
- */
 export async function fetcher<T>(params: FetcherParams): Promise<T> {
   try {
     const response = await fetch(params.url, {
