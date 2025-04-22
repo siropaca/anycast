@@ -3,12 +3,12 @@ import { promises as fs } from "fs";
 import path from "path";
 
 /**
- * メイン音声とBGMをミックスする
+ * メイン音声と BGM をミックスする
  *
  * @param mainAudioPath メイン音声のパス
- * @param bgmPath BGMのパス
+ * @param bgmPath BGM のパス
  * @param outputPath 出力パス
- * @param bgmVolume BGMの音量 (0.0-1.0)
+ * @param bgmVolume BGM の音量 (0.0-1.0)
  */
 export async function mixAudioWithBgm(
   mainAudioPath: string,
@@ -22,7 +22,7 @@ export async function mixAudioWithBgm(
     ffmpeg()
       .input(mainAudioPath)
       .input(bgmPath)
-      .inputOptions("-stream_loop", "-1") // BGMをループ
+      .inputOptions("-stream_loop", "-1") // BGM をループ
       .complexFilter([
         // BGM の音量を調整
         `[1:a]volume=${bgmVolume}[bgm]`,
