@@ -3,21 +3,18 @@ import { promises as fs } from "fs";
 import path from "path";
 import { randomUUID } from "crypto";
 
+export const JOINED_OUTPUT_FILE_PATH = "output/output.mp3";
+
 /**
  * 指定された MP3 の URL 配列を結合して 1 つの MP3 にする
  *
  * @param urls - MP3 の URL 配列
- * @param outputPath - 出力する MP3 のパス
  * @param silenceDuration - 音声間の空白時間（秒）
  */
-export async function joinMp3FromUrls(
-  urls: string[],
-  outputPath: string,
-  silenceDuration: number = 0
-): Promise<void> {
+export async function joinMp3FromUrls(urls: string[], silenceDuration: number = 0): Promise<void> {
   const tempDir = path.join(process.cwd(), "temp", randomUUID());
   await fs.mkdir(tempDir, { recursive: true });
-  await fs.mkdir(path.dirname(outputPath), { recursive: true });
+  await fs.mkdir(path.dirname(JOINED_OUTPUT_FILE_PATH), { recursive: true });
 
   const mp3Paths: string[] = [];
 
@@ -54,6 +51,7 @@ export async function joinMp3FromUrls(
               .save(silencePath);
           });
         }
+
         return lines.join("\n");
       })
     );
@@ -68,10 +66,10 @@ export async function joinMp3FromUrls(
         .outputOptions("-c", "copy")
         .on("end", () => resolve())
         .on("error", (err) => reject(err))
-        .save(outputPath);
+        .save(JOINED_OUTPUT_FILE_PATH);
     });
 
-    console.log("🎉 結合完了:", outputPath);
+    console.log("🎉 結合完了:", JOINED_OUTPUT_FILE_PATH);
   } catch (error) {
     console.error("🚨 結合エラー:", error);
     throw error;

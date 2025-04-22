@@ -1,26 +1,22 @@
 import ffmpeg from "fluent-ffmpeg";
 import { promises as fs } from "fs";
 import path from "path";
+import { JOINED_OUTPUT_FILE_PATH } from "./join.js";
+
+const MIXED_OUTPUT_FILE_PATH = "output/mixed.mp3";
 
 /**
  * メイン音声と BGM をミックスする
  *
- * @param mainAudioPath メイン音声のパス
  * @param bgmPath BGM のパス
- * @param outputPath 出力パス
  * @param bgmVolume BGM の音量 (0.0-1.0)
  */
-export async function mixAudioWithBgm(
-  mainAudioPath: string,
-  bgmPath: string,
-  outputPath: string,
-  bgmVolume: number = 0.2
-): Promise<void> {
-  await fs.mkdir(path.dirname(outputPath), { recursive: true });
+export async function mixAudioWithBgm(bgmPath: string, bgmVolume: number = 0.2): Promise<void> {
+  await fs.mkdir(path.dirname(MIXED_OUTPUT_FILE_PATH), { recursive: true });
 
   await new Promise<void>((resolve, reject) => {
     ffmpeg()
-      .input(mainAudioPath)
+      .input(JOINED_OUTPUT_FILE_PATH)
       .input(bgmPath)
       .inputOptions("-stream_loop", "-1") // BGM をループ
       .complexFilter([
@@ -32,8 +28,8 @@ export async function mixAudioWithBgm(
       .outputOptions("-map", "[out]")
       .on("end", () => resolve())
       .on("error", (err) => reject(err))
-      .save(outputPath);
+      .save(MIXED_OUTPUT_FILE_PATH);
   });
 
-  console.log("🎉 ミックス完了:", outputPath);
+  console.log("🎉 ミックス完了:", MIXED_OUTPUT_FILE_PATH);
 }
