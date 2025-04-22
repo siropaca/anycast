@@ -9,7 +9,8 @@ export type ActorName =
   | "金城 夏海"
   | "新堂 慶介"
   | "苔村 まりも"
-  | "ヴィクター・D・アシュフォード";
+  | "ヴィクター・D・アシュフォード"
+  | "陽斗・エイデン・グリーンウッド";
 
 type ActorInfo = {
   name: ActorName;
@@ -64,6 +65,12 @@ const ACTORS: ActorInfo[] = [
     id: "4407962b-8901-447a-8e0e-7896a0d230c0",
     speed: 0.95,
     note: "ワイルドおじさん",
+  },
+  {
+    name: "陽斗・エイデン・グリーンウッド",
+    id: "29cdf589-e581-4ab0-8467-0cd0c7ba640f",
+    speed: 0.95,
+    note: "少年",
   },
 ];
 
