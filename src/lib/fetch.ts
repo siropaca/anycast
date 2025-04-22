@@ -1,8 +1,9 @@
 //--------------------------------------------------------------
+import { FetchNijiVoiceParams } from "./nijiVoice/types";
 // Types
 //--------------------------------------------------------------
 
-interface FetchOptions {
+interface FetcherParams {
   method: string;
   apiKey: string;
   url: string;
@@ -16,16 +17,16 @@ interface FetchOptions {
 /**
  * 共通の fetch 処理
  */
-export async function fetchWithApiKey<T>(options: FetchOptions): Promise<T> {
+export async function fetcher<T>(params: FetcherParams): Promise<T> {
   try {
-    const response = await fetch(options.url, {
-      method: options.method,
+    const response = await fetch(params.url, {
+      method: params.method,
       headers: {
         accept: "application/json",
         "content-type": "application/json",
-        "x-api-key": options.apiKey,
+        "x-api-key": params.apiKey,
       },
-      body: JSON.stringify(options.body),
+      body: JSON.stringify(params.body),
     });
 
     if (!response.ok) {

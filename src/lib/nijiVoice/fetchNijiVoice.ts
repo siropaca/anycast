@@ -1,14 +1,16 @@
 import { FetchNijiVoiceParams, RequestBody, VoiceResponse } from "./types.js";
-import { fetchWithApiKey } from "../fetch.js";
+import { fetcher } from "../fetch.js";
 import { getEnvVar } from "../env.js";
 
 /**
  * にじボイスの API を叩く
  */
-export async function fetchNijiVoice(params: FetchNijiVoiceParams): Promise<VoiceResponse> {
+export async function fetchNijiVoice(
+  params: FetchNijiVoiceParams
+): Promise<VoiceResponse> {
   const { nijiVoiceApiKey } = getEnvVar();
 
-  return fetchWithApiKey<VoiceResponse>({
+  return fetcher<VoiceResponse>({
     method: "POST",
     apiKey: nijiVoiceApiKey,
     url: createRequestUrl(params.actorId),
