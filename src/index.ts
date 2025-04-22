@@ -95,9 +95,9 @@ async function main(): Promise<void> {
 
   console.log("🔄 音声結合中...");
 
-  await joinMp3FromUrls(urls, 0.7);
+  const outputFilePath = await joinMp3FromUrls(urls, 0.7);
 
-  await mixAudioWithBgm("bgm/bgm2.mp3", 0.3);
+  await mixAudioWithBgm(outputFilePath, "bgm/bgm2.mp3", 0.3);
 }
 
 main();

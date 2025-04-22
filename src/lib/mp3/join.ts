@@ -3,15 +3,16 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import ffmpeg from "fluent-ffmpeg";
 
-export const JOINED_OUTPUT_FILE_PATH = "output/output.mp3";
-
 /**
  * 指定された MP3 の URL 配列を結合して 1 つの MP3 にする
  *
  * @param urls - MP3 の URL 配列
  * @param silenceDuration - 音声間の空白時間（秒）
+ * @returns 出力した MP3 のパス
  */
-export async function joinMp3FromUrls(urls: string[], silenceDuration = 0): Promise<void> {
+export async function joinMp3FromUrls(urls: string[], silenceDuration = 0): Promise<string> {
+  const JOINED_OUTPUT_FILE_PATH = "output/output.mp3";
+
   const tempDir = path.join(process.cwd(), "temp", randomUUID());
   await fs.mkdir(tempDir, { recursive: true });
   await fs.mkdir(path.dirname(JOINED_OUTPUT_FILE_PATH), { recursive: true });
@@ -70,6 +71,8 @@ export async function joinMp3FromUrls(urls: string[], silenceDuration = 0): Prom
     });
 
     console.log("🎉 結合完了:", JOINED_OUTPUT_FILE_PATH);
+
+    return JOINED_OUTPUT_FILE_PATH;
   } catch (error) {
     console.error("🚨 結合エラー:", error);
     throw error;
