@@ -46,9 +46,9 @@ export async function joinMp3FromUrls(
           // 空白音声ファイルを生成
           await new Promise<void>((resolve, reject) => {
             ffmpeg()
-              .input("anullsrc")
-              .inputOptions("-f", "lavfi")
-              .outputOptions("-t", silenceDuration.toString())
+              .input(mp3Paths[0]) // 既存のMP3ファイルを使用
+              .inputOptions("-t", silenceDuration.toString())
+              .outputOptions("-af", "volume=0")
               .on("end", () => resolve())
               .on("error", (err) => reject(err))
               .save(silencePath)
