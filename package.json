@@ -4,9 +4,10 @@
   "type": "module",
   "scripts": {
     "generate": "tsx src/index.ts",
-    "format": "biome format --write .",
     "lint": "biome lint .",
-    "check": "biome check --apply ."
+    "check": "biome check .",
+    "format": "biome format --write .",
+    "check:fix": "biome check --write ."
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",

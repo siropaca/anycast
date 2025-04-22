@@ -1,6 +1,6 @@
+import { promises as fs } from "node:fs";
+import path from "node:path";
 import ffmpeg from "fluent-ffmpeg";
-import { promises as fs } from "fs";
-import path from "path";
 import { JOINED_OUTPUT_FILE_PATH } from "./join.js";
 
 const MIXED_OUTPUT_FILE_PATH = "output/mixed.mp3";
@@ -11,7 +11,7 @@ const MIXED_OUTPUT_FILE_PATH = "output/mixed.mp3";
  * @param bgmPath BGM のパス
  * @param bgmVolume BGM の音量 (0.0-1.0)
  */
-export async function mixAudioWithBgm(bgmPath: string, bgmVolume: number = 0.2): Promise<void> {
+export async function mixAudioWithBgm(bgmPath: string, bgmVolume = 0.2): Promise<void> {
   await fs.mkdir(path.dirname(MIXED_OUTPUT_FILE_PATH), { recursive: true });
 
   await new Promise<void>((resolve, reject) => {
@@ -23,7 +23,7 @@ export async function mixAudioWithBgm(bgmPath: string, bgmVolume: number = 0.2):
         // BGM の音量を調整
         `[1:a]volume=${bgmVolume}[bgm]`,
         // メイン音声と BGM をミックス
-        `[0:a][bgm]amix=inputs=2:duration=first:dropout_transition=2[out]`,
+        "[0:a][bgm]amix=inputs=2:duration=first:dropout_transition=2[out]",
       ])
       .outputOptions("-map", "[out]")
       .on("end", () => resolve())

@@ -1,7 +1,7 @@
+import { randomUUID } from "node:crypto";
+import { promises as fs } from "node:fs";
+import path from "node:path";
 import ffmpeg from "fluent-ffmpeg";
-import { promises as fs } from "fs";
-import path from "path";
-import { randomUUID } from "crypto";
 
 export const JOINED_OUTPUT_FILE_PATH = "output/output.mp3";
 
@@ -11,7 +11,7 @@ export const JOINED_OUTPUT_FILE_PATH = "output/output.mp3";
  * @param urls - MP3 の URL 配列
  * @param silenceDuration - 音声間の空白時間（秒）
  */
-export async function joinMp3FromUrls(urls: string[], silenceDuration: number = 0): Promise<void> {
+export async function joinMp3FromUrls(urls: string[], silenceDuration = 0): Promise<void> {
   const tempDir = path.join(process.cwd(), "temp", randomUUID());
   await fs.mkdir(tempDir, { recursive: true });
   await fs.mkdir(path.dirname(JOINED_OUTPUT_FILE_PATH), { recursive: true });
@@ -53,7 +53,7 @@ export async function joinMp3FromUrls(urls: string[], silenceDuration: number = 
         }
 
         return lines.join("\n");
-      })
+      }),
     );
 
     const concatText = concatLines.join("\n");

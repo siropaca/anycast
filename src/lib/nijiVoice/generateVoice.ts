@@ -1,6 +1,10 @@
-import { GenerateVoiceParams, GenerateVoiceRequestBody, GenerateVoiceResponse } from "./types.js";
-import { fetcher } from "../fetcher.js";
 import { getEnvVar } from "../env.js";
+import { fetcher } from "../fetcher.js";
+import type {
+  GenerateVoiceParams,
+  GenerateVoiceRequestBody,
+  GenerateVoiceResponse,
+} from "./types.js";
 
 /**
  * 音声の生成

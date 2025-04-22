@@ -5,7 +5,7 @@
 interface FetcherParams {
   method: string;
   url: string;
-  body?: any;
+  body?: unknown;
   headers?: Record<string, string>;
 }
 
