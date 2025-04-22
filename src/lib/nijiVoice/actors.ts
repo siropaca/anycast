@@ -9,14 +9,14 @@ export type ActorName =
   | "金城 夏海"
   | "新堂 慶介"
   | "苔村 まりも"
-  | "ヴィクター・D・アシュフォード";
+  | "ヴィクター・D・アシュフォード"
 
 type ActorInfo = {
-  name: ActorName;
-  id: string;
-  speed: number;
-  note: string;
-};
+  name: ActorName
+  id: string
+  speed: number
+  note: string
+}
 
 //--------------------------------------------------------------
 // Constants
@@ -65,18 +65,18 @@ const ACTORS: ActorInfo[] = [
     speed: 0.95,
     note: "ワイルドおじさん",
   },
-];
+]
 
 //--------------------------------------------------------------
 // Functions
 //--------------------------------------------------------------
 
 export function getActorInfo(actorName: ActorName): ActorInfo {
-  const actor = ACTORS.find((actor) => actor.name === actorName);
+  const actor = ACTORS.find((actor) => actor.name === actorName)
 
   if (!actor) {
-    throw new Error(`Actor not found: ${actorName}`);
+    throw new Error(`Actor not found: ${actorName}`)
   }
 
-  return actor;
+  return actor
 }
