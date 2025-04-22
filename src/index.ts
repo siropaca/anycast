@@ -1,5 +1,5 @@
 import { joinMp3FromUrls } from "./lib/mp3/join.js";
-import { mixAudioWithBgm } from "./lib/mp3/mix.js";
+import { mixMp3WithBgm } from "./lib/mp3/mix.js";
 import { findActor } from "./lib/nijiVoice/actors.js";
 import { generateVoice } from "./lib/nijiVoice/generateVoice.js";
 import { getVoiceActors } from "./lib/nijiVoice/getVoiceActors.js";
@@ -97,7 +97,7 @@ async function main(): Promise<void> {
 
   const outputFilePath = await joinMp3FromUrls(urls, 0.7);
 
-  await mixAudioWithBgm(outputFilePath, "bgm/bgm2.mp3", 0.3);
+  await mixMp3WithBgm(outputFilePath, "bgm/bgm2.mp3", 0.3);
 }
 
 main();

@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 
 interface FetcherParams {
-  method: string;
+  method: "GET" | "POST" | "PUT" | "DELETE";
   url: string;
   body?: unknown;
   headers?: Record<string, string>;

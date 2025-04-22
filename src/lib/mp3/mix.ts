@@ -2,20 +2,21 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import ffmpeg from "fluent-ffmpeg";
 
-const MIXED_OUTPUT_FILE_PATH = "output/mixed.mp3";
-
 /**
- * メイン音声と BGM をミックスする
+ * 音声と BGM をミックスする
  *
  * @param mainAudioPath メイン音声のパス
  * @param bgmPath BGM のパス
  * @param bgmVolume BGM の音量 (0.0-1.0)
+ * @@returns 出力した MP3 のパス
  */
-export async function mixAudioWithBgm(
+export async function mixMp3WithBgm(
   mainAudioPath: string,
   bgmPath: string,
   bgmVolume = 0.2,
-): Promise<void> {
+): Promise<string> {
+  const MIXED_OUTPUT_FILE_PATH = "output/mixed.mp3";
+
   await fs.mkdir(path.dirname(MIXED_OUTPUT_FILE_PATH), { recursive: true });
 
   await new Promise<void>((resolve, reject) => {
@@ -36,4 +37,6 @@ export async function mixAudioWithBgm(
   });
 
   console.log("🎉 ミックス完了:", MIXED_OUTPUT_FILE_PATH);
+
+  return MIXED_OUTPUT_FILE_PATH;
 }
