@@ -137,3 +137,5 @@ dist
 
 output/
 temp/
+
+.idea/
