@@ -1,22 +1,18 @@
-import {
-  FetchNijiVoiceParams,
-  FetchNijiVoiceRequestBody,
-  FetchNijiVoiceResponse,
-} from "./types.js";
+import { GenerateVoiceParams, GenerateVoiceRequestBody, GenerateVoiceResponse } from "./types.js";
 import { fetcher } from "../fetcher.js";
 import { getEnvVar } from "../env.js";
 
 /**
- * にじボイスの API を叩く
+ * 音声の生成
  */
-export async function fetchNijiVoice(
-  params: FetchNijiVoiceParams
-): Promise<FetchNijiVoiceResponse> {
+export async function generateVoice(params: GenerateVoiceParams): Promise<GenerateVoiceResponse> {
   const { nijiVoiceApiKey } = getEnvVar();
 
-  return fetcher<FetchNijiVoiceResponse>({
+  return fetcher<GenerateVoiceResponse>({
     method: "POST",
-    apiKey: nijiVoiceApiKey,
+    headers: {
+      "x-api-key": nijiVoiceApiKey,
+    },
     url: createRequestUrl(params.actorId),
     body: createRequestBody(params),
   });
@@ -32,10 +28,8 @@ function createRequestUrl(actorId: string): string {
 /**
  * リクエストボディを作成する
  */
-function createRequestBody(
-  params: FetchNijiVoiceParams
-): FetchNijiVoiceRequestBody {
-  const body: FetchNijiVoiceRequestBody = {
+function createRequestBody(params: GenerateVoiceParams): GenerateVoiceRequestBody {
+  const body: GenerateVoiceRequestBody = {
     format: "mp3",
     script: params.script,
     speed: String(params.speed),

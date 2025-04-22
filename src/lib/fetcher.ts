@@ -4,9 +4,9 @@
 
 interface FetcherParams {
   method: string;
-  apiKey: string;
   url: string;
   body: any;
+  headers?: Record<string, string>;
 }
 
 //--------------------------------------------------------------
@@ -20,7 +20,7 @@ export async function fetcher<T>(params: FetcherParams): Promise<T> {
       headers: {
         accept: "application/json",
         "content-type": "application/json",
-        "x-api-key": params.apiKey,
+        ...params.headers,
       },
       body: JSON.stringify(params.body),
     });

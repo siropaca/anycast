@@ -1,4 +1,4 @@
-export interface FetchNijiVoiceParams {
+export interface GenerateVoiceParams {
   // Voice actor ID
   actorId: string;
 
@@ -21,7 +21,7 @@ export interface FetchNijiVoiceParams {
   soundDuration?: number;
 }
 
-export interface FetchNijiVoiceRequestBody {
+export interface GenerateVoiceRequestBody {
   format: string;
   script: string;
   speed: string;
@@ -29,7 +29,7 @@ export interface FetchNijiVoiceRequestBody {
   soundDuration?: string;
 }
 
-export interface FetchNijiVoiceResponse {
+export interface GenerateVoiceResponse {
   generatedVoice: {
     audioFileUrl: string;
     audioFileDownloadUrl: string;
