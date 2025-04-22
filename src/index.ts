@@ -21,6 +21,8 @@ const scripts = [
 ]
 
 async function main(): Promise<void> {
+  const urls: string[] = []
+
   const response = await fetchNijiVoice({
     actorId: getActorId("春野 奏汰"),
     word: "こんにちは！",
