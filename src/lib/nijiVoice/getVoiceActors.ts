@@ -1,13 +1,14 @@
 import { fetcher } from "../fetcher.js";
 import { getEnvVar } from "../env.js";
+import { GetVoiceActorsResponse, VoiceActor } from "./types.js";
 
 /**
  * 声優一覧の取得
  */
-export async function getVoiceActors() {
+export async function getVoiceActors(): Promise<GetVoiceActorsResponse> {
   const { nijiVoiceApiKey } = getEnvVar();
 
-  return fetcher({
+  return fetcher<GetVoiceActorsResponse>({
     method: "GET",
     headers: {
       "x-api-key": nijiVoiceApiKey,

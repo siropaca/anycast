@@ -1,3 +1,7 @@
+//--------------------------------------------------------------
+// GenerateVoice
+//--------------------------------------------------------------
+
 export interface GenerateVoiceParams {
   // Voice actor ID
   actorId: string;
@@ -36,4 +40,34 @@ export interface GenerateVoiceResponse {
     duration: number;
     remainingCredits: number;
   };
+}
+
+//--------------------------------------------------------------
+// GetVoiceActors
+//--------------------------------------------------------------
+
+export interface GetVoiceActorsResponse {
+  voiceActors: VoiceActor[];
+}
+
+export interface VoiceActor {
+  id: string;
+  name: string;
+  nameReading: string;
+  age: number;
+  gender: "MALE" | "FEMALE";
+  birthMonth: number;
+  birthDay: number;
+  smallImageUrl: string;
+  mediumImageUrl: string;
+  largeImageUrl: string;
+  sampleVoiceUrl: string;
+  sampleScript: string;
+  recommendedVoiceSpeed: number;
+  recommendedEmotionalLevel: number;
+  recommendedSoundDuration: number;
+  voiceStyles: {
+    id: number;
+    style: string;
+  }[];
 }
