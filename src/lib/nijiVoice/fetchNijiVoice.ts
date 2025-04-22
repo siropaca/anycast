@@ -29,7 +29,7 @@ function createRequestUrl(actorId: string): string {
 function createRequestBody(params: VoiceParams): RequestBody {
   const body: RequestBody = {
     format: "mp3",
-    script: params.word,
+    script: params.script,
     speed: String(params.speed),
   }
 
