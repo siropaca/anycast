@@ -37,7 +37,3 @@ export async function callChatGpt({
     throw error;
   }
 }
-
-callChatGpt({
-  input: "Are semicolons optional in JavaScript?",
-});
