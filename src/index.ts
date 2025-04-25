@@ -71,13 +71,13 @@ const SCRIPTS: ReadonlyArray<{ actorName: string; line: string }> = [
 ];
 
 async function main(): Promise<void> {
+  console.log("🔄 声優情報取得中...");
+  const voiceActors = await getVoiceActors();
+
   const script = await generateScript("こんにちは！");
 
   console.log(script);
   return;
-
-  console.log("🔄 声優情報取得中...");
-  const voiceActors = await getVoiceActors();
 
   const urls: string[] = [];
 
