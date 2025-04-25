@@ -1,6 +1,6 @@
-import { joinMp3FromUrls } from "./lib/mp3/join.js";
-import { mixMp3WithBgm } from "./lib/mp3/mix.js";
-import { findActor } from "./lib/nijiVoice/actors.js";
+import { joinMp3FromUrls } from "./lib/mp3/joinMp3FromUrls.js";
+import { mixMp3WithBgm } from "./lib/mp3/mixMp3WithBgm.js";
+import { findActor } from "./lib/nijiVoice/findActor.js";
 import { generateVoice } from "./lib/nijiVoice/generateVoice.js";
 import { getVoiceActors } from "./lib/nijiVoice/getVoiceActors.js";
 
