@@ -3,7 +3,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "gpt": "tsx src/lib/chatGpt/index.ts",
     "generate": "tsx src/index.ts",
     "lint": "biome lint .",
     "check": "biome check .",
