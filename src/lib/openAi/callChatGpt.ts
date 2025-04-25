@@ -1,7 +1,7 @@
 import type { ChatModel } from "openai/resources/shared.js";
 import { client } from "./client.js";
 
-interface ChatGptParams {
+export interface ChatGptParams {
   model?: ChatModel;
   instructions?: string;
   input: string;
@@ -28,8 +28,6 @@ export async function callChatGpt({
       ...(instructions && { instructions }),
       input,
     });
-
-    console.log(response);
 
     return response.output_text;
   } catch (error) {

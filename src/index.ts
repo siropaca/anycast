@@ -3,7 +3,7 @@ import { mixMp3WithBgm } from "./lib/mp3/mixMp3WithBgm.js";
 import { findActor } from "./lib/nijiVoice/findActor.js";
 import { generateVoice } from "./lib/nijiVoice/generateVoice.js";
 import { getVoiceActors } from "./lib/nijiVoice/getVoiceActors.js";
-import { callChatGpt } from "./lib/openAi/callChatGpt.js";
+import { generateScript } from "./lib/openAi/generateScript.js";
 
 const SCRIPTS: ReadonlyArray<{ actorName: string; line: string }> = [
   {
@@ -71,11 +71,10 @@ const SCRIPTS: ReadonlyArray<{ actorName: string; line: string }> = [
 ];
 
 async function main(): Promise<void> {
-  const response = await callChatGpt({
-    input: "Are semicolons optional in JavaScript?",
-  });
+  const script = await generateScript("Are semicolons optional in JavaScript?");
 
-  console.log(response);
+  console.log(script);
+  return;
 
   console.log("🔄 声優情報取得中...");
   const voiceActors = await getVoiceActors();
