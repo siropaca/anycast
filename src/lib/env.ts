@@ -4,14 +4,14 @@ config();
 
 export interface EnvVar {
   nijiVoiceApiKey: string;
-  openAiApiKey: string;
+  openaiApiKey: string;
   anthropicApiKey: string;
 }
 
 export function getEnvVar(): EnvVar {
   const vars: Partial<EnvVar> = {
     nijiVoiceApiKey: process.env.NIJI_VOICE_API_KEY,
-    openAiApiKey: process.env.OPEN_AI_API_KEY,
+    openaiApiKey: process.env.OPENAI_API_KEY,
     anthropicApiKey: process.env.ANTHROPIC_API_KEY,
   };
 

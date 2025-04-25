@@ -25,6 +25,7 @@ export async function callChatGpt({
   try {
     const response = await client.responses.create({
       model,
+      tools: [{ type: "web_search_preview" }],
       ...(instructions && { instructions }),
       input,
     });

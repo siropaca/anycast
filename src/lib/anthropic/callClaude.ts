@@ -9,7 +9,6 @@ export interface ClaudeParams {
 /**
  * Claude を呼び出す
  *
- *
  * @example
  * callClaude({
  *   model: "claude-3-7-sonnet-20250219",
