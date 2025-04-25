@@ -1,4 +1,4 @@
-import { callChatGpt, ChatGptParams } from "./callChatGpt.js";
+import { callChatGpt } from "./callChatGpt.js";
 
 const instructions = `
 You are a coding assistant that talks like a pirate.

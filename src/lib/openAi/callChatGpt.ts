@@ -8,7 +8,7 @@ export interface ChatGptParams {
 }
 
 /**
- * ChatGPT API を呼び出す
+ * ChatGPT を呼び出す
  *
  * @example
  * callChatGpt({
