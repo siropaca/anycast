@@ -1,17 +1,9 @@
-//--------------------------------------------------------------
-// Types
-//--------------------------------------------------------------
-
 interface FetcherParams {
   method: "GET" | "POST" | "PUT" | "DELETE";
   url: string;
   body?: unknown;
   headers?: Record<string, string>;
 }
-
-//--------------------------------------------------------------
-// Functions
-//--------------------------------------------------------------
 
 export async function fetcher<T>(params: FetcherParams): Promise<T> {
   try {

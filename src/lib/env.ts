@@ -2,19 +2,11 @@ import { config } from "dotenv";
 
 config();
 
-//--------------------------------------------------------------
-// Types
-//--------------------------------------------------------------
-
 export interface EnvVar {
   nijiVoiceApiKey: string;
   openAiApiKey: string;
   anthropicApiKey: string;
 }
-
-//--------------------------------------------------------------
-// Functions
-//--------------------------------------------------------------
 
 export function getEnvVar(): EnvVar {
   const vars: Partial<EnvVar> = {
