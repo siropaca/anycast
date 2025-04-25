@@ -1,16 +1,16 @@
 import OpenAI from "openai";
 import { getEnvVar } from "../env.js";
 
-const { openaiApiKey } = getEnvVar();
+const { openAiApiKey } = getEnvVar();
 
 const client = new OpenAI({
-  apiKey: openaiApiKey,
+  apiKey: openAiApiKey,
   maxRetries: 2,
   timeout: 300 * 1000,
 });
 
 /**
- * ChatGPT APIを呼び出す
+ * ChatGPT API を呼び出す
  */
 export async function callChatGpt(): Promise<void> {
   try {
