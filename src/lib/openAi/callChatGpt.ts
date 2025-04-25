@@ -1,29 +1,43 @@
-import OpenAI from "openai";
-import { getEnvVar } from "../env.js";
+import type { ChatModel } from "openai/resources/shared.js";
+import { client } from "./client.js";
 
-const { openAiApiKey } = getEnvVar();
-
-const client = new OpenAI({
-  apiKey: openAiApiKey,
-  maxRetries: 2,
-  timeout: 300 * 1000,
-});
+interface ChatGptParams {
+  model?: ChatModel;
+  instructions?: string;
+  input: string;
+}
 
 /**
  * ChatGPT API を呼び出す
+ *
+ * @example
+ * callChatGpt({
+ *   model: "gpt-4o",
+ *   instructions: "You are a coding assistant that talks like a pirate",
+ *   input: "Are semicolons optional in JavaScript?",
+ * });
  */
-export async function callChatGpt(): Promise<void> {
+export async function callChatGpt({
+  model = "gpt-4o",
+  instructions,
+  input,
+}: ChatGptParams): Promise<string> {
   try {
     const response = await client.responses.create({
-      model: "gpt-4o",
-      instructions: "You are a coding assistant that talks like a pirate",
-      input: "Are semicolons optional in JavaScript?",
+      model,
+      ...(instructions && { instructions }),
+      input,
     });
 
-    console.log(response.output_text);
+    console.log(response);
+
+    return response.output_text;
   } catch (error) {
     console.error("エラー:", error);
+    throw error;
   }
 }
 
-callChatGpt();
+callChatGpt({
+  input: "Are semicolons optional in JavaScript?",
+});
