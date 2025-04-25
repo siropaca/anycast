@@ -3,7 +3,7 @@ import { mixMp3WithBgm } from "./lib/mp3/mixMp3WithBgm.js";
 import { findActor } from "./lib/nijiVoice/findActor.js";
 import { generateVoice } from "./lib/nijiVoice/generateVoice.js";
 import { getVoiceActors } from "./lib/nijiVoice/getVoiceActors.js";
-import { generateScript } from "./lib/openAi/generateScript.js";
+import { generateScript } from "./lib/anthropic/generateScript.js";
 
 const SCRIPTS: ReadonlyArray<{ actorName: string; line: string }> = [
   {
@@ -71,7 +71,7 @@ const SCRIPTS: ReadonlyArray<{ actorName: string; line: string }> = [
 ];
 
 async function main(): Promise<void> {
-  const script = await generateScript("Are semicolons optional in JavaScript?");
+  const script = await generateScript("こんにちは！");
 
   console.log(script);
   return;
