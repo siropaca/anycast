@@ -28,12 +28,14 @@ const instructions = `
 - 文中に「！」は使用しないでください。
 - 漢字やカタカナはそのまま使用して構いません。
 - アルファベット表記は避け、一般的なカタカナ表記に変換してください。
-  - 例：JavaScript → ジャバスクリプト、Next.js → ネクストジェーエス、Nuxt → ナクスト、React → リアクト
+  - 例：JavaScript → ジャバスクリプト、Next.js → ネクストジェーエス、Nuxt → ナクスト、React → リアクト、Ajax → エイジャックス
 - 会話は、与えられたテーマに沿って、2人が解説を深めながら進行してください。
 - 会話の長さは最大で10往復（20発言）以内としてください。
 `;
 
-export async function generateScript(input: string): Promise<Array<{ actorName: string; line: string }>> {
+export async function generateScript(
+  input: string
+): Promise<Array<{ actorName: string; line: string }>> {
   const response = await callClaude({
     instructions,
     input,
