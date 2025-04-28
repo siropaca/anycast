@@ -1,6 +1,6 @@
 import { client } from "./client.js";
 
-export interface ClaudeParams {
+interface ClaudeParams {
   model?: string; // https://docs.anthropic.com/en/docs/about-claude/models/all-models
   instructions?: string;
   input: string;

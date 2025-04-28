@@ -1,7 +1,7 @@
 import type { ChatModel } from "openai/resources/shared.js";
 import { client } from "./client.js";
 
-export interface ChatGptParams {
+interface ChatGptParams {
   model?: ChatModel;
   instructions?: string;
   input: string;
