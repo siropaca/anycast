@@ -24,7 +24,7 @@ export async function callClaude({
   try {
     const response = await client.messages.create({
       model,
-      max_tokens: 2048,
+      max_tokens: 4096,
       // temperature: 1,
       system: instructions,
       messages: [{ role: "user", content: input }],
