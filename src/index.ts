@@ -10,7 +10,7 @@ async function main(): Promise<void> {
   const voiceActors = await getVoiceActors();
 
   console.log("🔄 台本生成中...");
-  const scripts = await generateScript("JavaScriptの歴史について");
+  const scripts = await generateScript("日本酒の雑学");
 
   const urls: string[] = [];
 
@@ -35,7 +35,7 @@ async function main(): Promise<void> {
 
   console.log("🔄 音声結合中...");
 
-  const outputFilePath = await joinMp3FromUrls(urls, 0.7);
+  const outputFilePath = await joinMp3FromUrls(urls, 1, 0.7, 3);
 
   await mixMp3WithBgm(outputFilePath, "bgm/bgm2.mp3", 0.3);
 }
