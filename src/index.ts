@@ -3,7 +3,7 @@ import { mixMp3WithBgm } from "./lib/mp3/mixMp3WithBgm.js";
 import { findActor } from "./lib/nijiVoice/findActor.js";
 import { generateVoice } from "./lib/nijiVoice/generateVoice.js";
 import { getVoiceActors } from "./lib/nijiVoice/getVoiceActors.js";
-import { generateScript } from "./lib/openai/generateScript.js";
+import { generateScript } from "./lib/anthropic/generateScript.js";
 
 async function main(): Promise<void> {
   console.log("🔄 声優情報取得中...");
