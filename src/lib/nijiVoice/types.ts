@@ -51,23 +51,22 @@ export interface GetVoiceActorsResponse {
 }
 
 export interface VoiceActor {
-  id: string;
-  name: string;
-  nameReading: string;
-  age: number;
-  gender: "MALE" | "FEMALE";
-  birthMonth: number;
-  birthDay: number;
-  smallImageUrl: string;
-  mediumImageUrl: string;
-  largeImageUrl: string;
-  sampleVoiceUrl: string;
-  sampleScript: string;
-  recommendedVoiceSpeed: number;
-  recommendedEmotionalLevel: number;
-  recommendedSoundDuration: number;
+  id: string; // Voice actor ID
+  name: string; // 名前
+  nameReading: string; // 名前の読み
+  gender: "MALE" | "FEMALE"; // 性別
+  birthMonth: number; // 誕生月
+  birthDay: number; // 誕生日
+  smallImageUrl: string; // 小さい画像URL
+  mediumImageUrl: string; // 中くらいの画像URL
+  largeImageUrl: string; // 大きい画像URL
+  sampleVoiceUrl: string; // サンプルボイス
+  sampleScript: string; // サンプルセリフ
+  recommendedVoiceSpeed: number; // 推奨ボイススピード
+  recommendedEmotionalLevel: number; // 推奨感情レベル
+  recommendedSoundDuration: number; // 推奨音素の発音の長さ
   voiceStyles: {
-    id: number;
-    style: string;
+    id: number; // 声のスタイルID
+    style: string; // 声のスタイル
   }[];
 }
