@@ -1,5 +1,5 @@
 import { callClaude } from "./callClaude.js";
-import { instructions } from '../../config/instructions.js';
+import { instructions } from "../../config/instructions.js";
 
 export async function generateScript(
   input: string
@@ -8,8 +8,6 @@ export async function generateScript(
     instructions,
     input,
   });
-
-  console.log(response);
 
   return JSON.parse(response);
 }
