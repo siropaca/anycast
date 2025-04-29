@@ -12,13 +12,13 @@ interface ChatGptParams {
  *
  * @example
  * callChatGpt({
- *   model: "gpt-4o",
+ *   model: "gpt-4.1",
  *   instructions: "You are a coding assistant that talks like a pirate",
  *   input: "Are semicolons optional in JavaScript?",
  * });
  */
 export async function callChatGpt({
-  model = "gpt-4o",
+  model = "gpt-4.1",
   instructions,
   input,
 }: ChatGptParams): Promise<string> {
@@ -26,7 +26,18 @@ export async function callChatGpt({
     const response = await client.responses.create({
       model,
       // text: { format: { type: "json_object" } },
-      // tools: [{ type: "web_search_preview" }],
+      tools: [
+        // DOC: https://platform.openai.com/docs/guides/tools-web-search
+        {
+          type: "web_search_preview",
+          user_location: {
+            type: "approximate",
+            country: "JP",
+            city: "Tokyo",
+            region: "Tokyo",
+          },
+        },
+      ],
       ...(instructions && { instructions }),
       input,
     });
