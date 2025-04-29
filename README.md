@@ -1,5 +1,11 @@
 # anycast
 
+テーマからポットキャスト風音声ファイルを作成する
+
+## 必要条件
+
+`.tool-versions` に記載
+
 ## セットアップ
 
 1. 依存関係のインストール
@@ -13,6 +19,8 @@ pnpm install
 
 ```bash
 NIJI_VOICE_API_KEY=your_api_key
+OPENAI_API_KEY=your_api_key
+ANTHROPIC_API_KEY=your_api_key
 ```
 
 ## 使用方法
@@ -27,6 +35,11 @@ pnpm generate
 
 ## 開発
 
+- ビルド
+```bash
+pnpm build
+```
+
 - コードフォーマット
 ```bash
 pnpm format
@@ -36,3 +49,15 @@ pnpm format
 ```bash
 pnpm lint
 ```
+
+- 依存関係の更新確認
+```bash
+pnpm ncu
+```
+
+## プロジェクト構成
+
+- `src/` - ソースコード
+- `output/` - 生成された音声ファイル
+- `bgm/` - BGMファイル
+- `temp/` - 一時ファイル
