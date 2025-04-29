@@ -1,4 +1,4 @@
-import { generateScript } from "./lib/anthropic/generateScript.js";
+import { generateScript } from "./lib/openai/generateScript.js";
 import { joinMp3FromUrls } from "./lib/mp3/joinMp3FromUrls.js";
 import { mixMp3WithBgm } from "./lib/mp3/mixMp3WithBgm.js";
 import { findActor } from "./lib/nijiVoice/findActor.js";
@@ -10,7 +10,9 @@ async function main(): Promise<void> {
   const voiceActors = await getVoiceActors();
 
   console.log("🔄 台本生成中...");
-  const scripts = await generateScript("日本酒の雑学");
+  const scripts = await generateScript("先週のフロントエンドの界隈のニュース");
+  console.log(scripts);
+  return;
 
   const urls: string[] = [];
 
