@@ -16,7 +16,7 @@ export async function joinMp3FromUrls(
   urls: string[],
   initialSilenceDuration = 0,
   silenceDuration = 0,
-  finalSilenceDuration = 0
+  finalSilenceDuration = 0,
 ): Promise<string> {
   const JOINED_OUTPUT_FILE_PATH = "output/output.mp3";
 
@@ -49,11 +49,7 @@ export async function joinMp3FromUrls(
         if (i === 0 && initialSilenceDuration > 0) {
           const initialSilencePath = path.join(tempDir, "initial_silence.mp3");
           lines.push(`file '${initialSilencePath}'`);
-          await createSilenceFile(
-            initialSilencePath,
-            initialSilenceDuration,
-            mp3Paths[0]
-          );
+          await createSilenceFile(initialSilencePath, initialSilenceDuration, mp3Paths[0]);
         }
 
         lines.push(`file '${p}'`);
@@ -69,15 +65,11 @@ export async function joinMp3FromUrls(
         if (i === mp3Paths.length - 1 && finalSilenceDuration > 0) {
           const finalSilencePath = path.join(tempDir, "final_silence.mp3");
           lines.push(`file '${finalSilencePath}'`);
-          await createSilenceFile(
-            finalSilencePath,
-            finalSilenceDuration,
-            mp3Paths[0]
-          );
+          await createSilenceFile(finalSilencePath, finalSilenceDuration, mp3Paths[0]);
         }
 
         return lines.join("\n");
-      })
+      }),
     );
 
     const concatText = concatLines.join("\n");
@@ -106,7 +98,7 @@ export async function joinMp3FromUrls(
 async function createSilenceFile(
   outputPath: string,
   duration: number,
-  referenceFile: string
+  referenceFile: string,
 ): Promise<void> {
   return new Promise<void>((resolve, reject) => {
     ffmpeg()
