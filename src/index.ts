@@ -25,17 +25,20 @@ async function main(): Promise<void> {
       speed: actor.recommendedVoiceSpeed,
     });
 
-    console.log("🎉 音声生成完了", `(${response.generatedVoice.remainingCredits})`);
+    console.log(
+      "🎉 音声生成完了",
+      `(${response.generatedVoice.remainingCredits})`
+    );
 
     urls.push(response.generatedVoice.audioFileUrl);
   }
 
   console.log("🔄 音声結合中...");
-  const outputFilePath = await joinMp3FromUrls(urls, 1, 0.7, 3);
-  console.log("🎉 結合完了");
 
+  const outputFilePath = await joinMp3FromUrls(urls, 1, 0.7, 3);
   await mixMp3WithBgm(outputFilePath, "bgm/bgm2.mp3", 0.3);
-  console.log("🎉 ミックス完了");
+
+  console.log("🎉 音声結合完了");
 }
 
 main();
