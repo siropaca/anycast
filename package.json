@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "tsc",
     "generate": "tsx src/index.ts",
     "lint": "biome lint .",
     "check": "biome check .",
