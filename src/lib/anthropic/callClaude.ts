@@ -38,7 +38,7 @@ export async function callClaude({
 
     return content.text;
   } catch (error) {
-    console.error("エラー:", error);
+    console.error("Error:", error);
     throw error;
   }
 }

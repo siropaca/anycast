@@ -93,11 +93,9 @@ export async function joinMp3FromUrls(
         .save(JOINED_OUTPUT_FILE_PATH);
     });
 
-    console.log("🎉 結合完了:", JOINED_OUTPUT_FILE_PATH);
-
     return JOINED_OUTPUT_FILE_PATH;
   } catch (error) {
-    console.error("🚨 結合エラー:", error);
+    console.error("Error:", error);
     throw error;
   } finally {
     await fs.rm(tempDir, { recursive: true, force: true });

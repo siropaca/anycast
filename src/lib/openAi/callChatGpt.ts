@@ -33,7 +33,7 @@ export async function callChatGpt({
 
     return response.output_text;
   } catch (error) {
-    console.error("エラー:", error);
+    console.error("Error:", error);
     throw error;
   }
 }

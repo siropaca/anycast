@@ -34,10 +34,12 @@ async function main(): Promise<void> {
   }
 
   console.log("🔄 音声結合中...");
-
   const outputFilePath = await joinMp3FromUrls(urls, 1, 0.7, 3);
+  console.log("🎉 結合完了");
+
 
   await mixMp3WithBgm(outputFilePath, "bgm/bgm2.mp3", 0.3);
+  console.log("🎉 ミックス完了");
 }
 
 main();

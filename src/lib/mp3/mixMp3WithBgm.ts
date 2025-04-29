@@ -36,7 +36,5 @@ export async function mixMp3WithBgm(
       .save(MIXED_OUTPUT_FILE_PATH);
   });
 
-  console.log("🎉 ミックス完了:", MIXED_OUTPUT_FILE_PATH);
-
   return MIXED_OUTPUT_FILE_PATH;
 }
