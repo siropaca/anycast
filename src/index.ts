@@ -25,9 +25,9 @@ async function main(): Promise<void> {
       speed: actor.recommendedVoiceSpeed,
     });
 
-    console.log("🎉 音声生成完了", `(${response.generatedVoice.remainingCredits})`);
-
     urls.push(response.generatedVoice.audioFileUrl);
+
+    console.log("🎉 音声生成完了", `(${response.generatedVoice.remainingCredits})`);
   }
 
   console.log("🔄 音声結合中...");
