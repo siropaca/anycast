@@ -11,8 +11,6 @@ async function main(): Promise<void> {
 
   console.log("🔄 台本生成中...");
   const scripts = await generateScript("先週のフロントエンドの界隈のニュース");
-  console.log(scripts);
-  return;
 
   const urls: string[] = [];
 
@@ -27,10 +25,7 @@ async function main(): Promise<void> {
       speed: actor.recommendedVoiceSpeed,
     });
 
-    console.log(
-      "🎉 音声生成完了",
-      `(${response.generatedVoice.remainingCredits})`
-    );
+    console.log("🎉 音声生成完了", `(${response.generatedVoice.remainingCredits})`);
 
     urls.push(response.generatedVoice.audioFileUrl);
   }
