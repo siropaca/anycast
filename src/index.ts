@@ -1,5 +1,5 @@
-import { joinMp3FromUrls } from "./lib/mp3/joinMp3FromUrls.js";
-import { mixMp3WithBgm } from "./lib/mp3/mixMp3WithBgm.js";
+import { joinMp3FromUrls } from "./lib/mp3/joinMp3FromUrls";
+import { mixMp3WithBgm } from "./lib/mp3/mixMp3WithBgm";
 import { findActor } from "./lib/nijiVoice/findActor.js";
 import { generateVoice } from "./lib/nijiVoice/generateVoice.js";
 import { getVoiceActors } from "./lib/nijiVoice/getVoiceActors.js";
@@ -21,7 +21,7 @@ async function main(): Promise<void> {
 
     const response = await generateVoice({
       actorId: actor.id,
-      script: script.line,
+      script: script.line.trim(),
       speed: actor.recommendedVoiceSpeed,
     });
 
@@ -31,7 +31,6 @@ async function main(): Promise<void> {
   }
 
   console.log("🔄 音声結合中...");
-
   const outputFilePath = await joinMp3FromUrls(urls, 1, 0.7, 3);
   await mixMp3WithBgm(outputFilePath, "bgm/bgm2.mp3", 0.3);
 
