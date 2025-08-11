@@ -1,4 +1,4 @@
-export const instructions = `
+export const INSTRUCTIONS = `
 あなたはラジオの放送作家です。
 与えられたテーマについて、2人が会話形式で解説を行う台本を作成してください。
 
